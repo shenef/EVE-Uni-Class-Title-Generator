@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="EVE Uni Class Title Generator" />
+        <title>EVE Uni Class Title Generator</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">EVE Uni Class Title Generator</h1>
+                <form id="eventForm" onchange="generateOutput()">
+                    <div class="field">
+                        <label class="label">Status</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="status" aria-label="Class status">
+                                    <option value="Open" selected>Open</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="Postponed">Postponed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Is CORE Class?</label>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox" id="core" />
+                                Yes
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Class name</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                type="text"
+                                placeholder="Class name"
+                                id="className"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Date and Time (EVE Time!)</label>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="date"
+                                    id="startDate"
+                                    aria-label="Start date"
+                                />
+                            </div>
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="time"
+                                    id="startTime"
+                                    aria-label="Start time"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <br />
+
+                <div class="field">
+                    <label class="label">Thread title</label>
+                    <div class="control">
+                        <textarea
+                            class="textarea"
+                            id="threadTitle"
+                            aria-label="Thread title"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <p>
+                        Paste the generated time into
+                        <a href="https://www.eveonlinetime.com/">eveonlinetime.com</a> to get a link
+                        that converts EVE Time to the visitors timezone.
+                    </p>
+                </div>
+
+                <script>
+                    function generateOutput() {
+                        const status = document.getElementById("status").value
+                        const core = document.getElementById("core").checked
+                        const className = document.getElementById("className").value
+                        const startTime = document.getElementById("startTime").value
+                        const startDate = document.getElementById("startDate").value
+                        let outputString = ""
+
+                        // Conditionally add status to output string
+                        if (status !== "Open") {
+                            outputString += `[${status}] `
+                        }
+
+                        if (core) {
+                            outputString += "CORE "
+                        }
+
+                        outputString += `${className} | ${startDate} ${startTime} EVE Time`
+
+                        document.getElementById("threadTitle").textContent = outputString
+                    }
+                </script>
+            </div>
+        </section>
+    </body>
+</html>

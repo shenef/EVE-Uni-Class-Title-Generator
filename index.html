@@ -27,10 +27,10 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Is CORE Class?</label>
+                        <label class="label">Is this a CORE Class?</label>
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" id="core" />
+                                <input type="checkbox" id="isCore" />
                                 Yes
                             </label>
                         </div>
@@ -49,7 +49,8 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Date and Time (EVE Time!)</label>
+                        <label class="label">Date and Time</label>
+                        <p class="help">Use EVE Time!</p>
                         <div class="field is-grouped">
                             <div class="control">
                                 <input
@@ -95,7 +96,7 @@
                 <script>
                     function generateOutput() {
                         const status = document.getElementById("status").value
-                        const core = document.getElementById("core").checked
+                        const isCore = document.getElementById("isCore").checked
                         const className = document.getElementById("className").value
                         const startTime = document.getElementById("startTime").value
                         const startDate = document.getElementById("startDate").value
@@ -106,7 +107,7 @@
                             outputString += `[${status}] `
                         }
 
-                        if (core) {
+                        if (isCore) {
                             outputString += "CORE "
                         }
 
@@ -117,5 +118,19 @@
                 </script>
             </div>
         </section>
+        <footer>
+            <hr />
+            <div class="content has-text-centered">
+                <p>
+                    Contribute on
+                    <a
+                        href="https://github.com/shenef/EVE-Uni-Class-Title-Generator"
+                        target="_blank"
+                        >GitHub</a
+                    >.
+                </p>
+                <br />
+            </div>
+        </footer>
     </body>
 </html>

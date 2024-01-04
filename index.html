@@ -11,7 +11,7 @@
         <section class="section">
             <div class="container">
                 <h1 class="title">EVE Uni Class Title Generator</h1>
-                <form id="eventForm" onchange="generateOutput()">
+                <form onchange="generateOutput()">
                     <div class="field">
                         <label class="label">Status</label>
                         <div class="control">
@@ -102,7 +102,6 @@
                         const startDate = document.getElementById("startDate").value
                         let outputString = ""
 
-                        // Conditionally add status to output string
                         if (status !== "Open") {
                             outputString += `[${status}] `
                         }
